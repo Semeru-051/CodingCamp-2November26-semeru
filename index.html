@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- ── Top Bar ── -->
+  <header class="topbar">
+    <div class="topbar__left">
+      <button id="theme-toggle" class="btn-icon" title="Toggle theme" aria-label="Toggle theme">
+        <span class="icon-sun">☀️</span>
+        <span class="icon-moon">🌙</span>
+      </button>
+    </div>
+    <div class="topbar__center">
+      <h1 id="greeting-text" class="greeting">Good morning</h1>
+      <div id="clock" class="clock"></div>
+      <div id="date-display" class="date"></div>
+    </div>
+  </header>
+
+  <!-- ── Main Grid ── -->
+  <main class="grid">
+
+    <!-- ── Focus Timer ── -->
+    <section class="card" id="timer-card">
+      <h2 class="card__title">Focus Timer</h2>
+      <div class="timer__display" id="timer-display">25:00</div>
+      <div class="timer__custom">
+        <input type="number" id="custom-minutes" min="1" max="60" placeholder="Set minutes" aria-label="Timer minutes" />
+        <button class="btn-secondary" id="set-custom">Set</button>
+      </div>
+      <div class="timer__controls">
+        <button class="btn-primary" id="timer-start">Start</button>
+        <button class="btn-secondary" id="timer-stop">Stop</button>
+        <button class="btn-secondary" id="timer-reset">Reset</button>
+      </div>
+    </section>
+
+    <!-- ── To-Do List ── -->
+    <section class="card" id="todo-card">
+      <h2 class="card__title">To-Do List</h2>
+      <div class="card__header">
+        <small style="color: var(--color-text-muted); font-weight: 500;">Drag to reorder</small>
+      </div>
+
+      <form id="todo-form" class="todo__form">
+        <input type="text" id="todo-input" placeholder="Add a new task…" aria-label="New task" maxlength="120" required />
+        <button type="submit" class="btn-primary">Add</button>
+      </form>
+
+      <ul id="todo-list" class="todo__list" aria-label="Task list"></ul>
+      <p id="todo-empty" class="todo__empty">No tasks yet. Add one above!</p>
+    </section>
+
+    <!-- ── Quick Links ── -->
+    <section class="card" id="links-card">
+      <h2 class="card__title">Quick Links</h2>
+
+      <form id="link-form" class="links__form">
+        <input type="text" id="link-name" placeholder="Label" aria-label="Link label" maxlength="30" required />
+        <input type="url" id="link-url" placeholder="https://…" aria-label="Link URL" required />
+        <button type="submit" class="btn-primary">Add</button>
+      </form>
+
+      <div id="links-grid" class="links__grid"></div>
+      <p id="links-empty" class="todo__empty">No links yet. Add one above!</p>
+    </section>
+
+  </main>
+
+  <!-- ── Edit Task Modal ── -->
+  <div id="edit-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal__box">
+      <h3 id="modal-title">Edit Task</h3>
+      <input type="text" id="edit-input" maxlength="120" aria-label="Edit task text" />
+      <div class="modal__actions">
+        <button class="btn-primary" id="edit-save">Save</button>
+        <button class="btn-secondary" id="edit-cancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div id="modal-backdrop" class="modal__backdrop" hidden></div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
